@@ -1,0 +1,37 @@
+<p>
+	{{fecha | date:"dd/MMMM/yyyy" | uppercase  }}
+</p>
+
+<!-- <p>
+	{{fecha | uppercase | date:"dd/MMMM/yyyy"  }}
+</p> -->
+
+<p>
+	{{nombre | uppercase }}
+</p>
+
+<div class="container">
+<div class="row">
+<div class="col-8 justify-content-center">
+	<input type="text" class="form-control" [(ngModel)]="textoABuscar">
+	<button type="button" (onclick)="buscar()">Buscar</button>
+	<thead class="thead-dark">
+		<tr>
+			<th>Autor</th>
+			<th>Título</th>
+			<th>Año</th>
+			<th>Sinopsis</th>
+		</tr>
+	</thead>
+	<tr *ngFor="let libro of libros | filtro:textoABuscar">
+		<td>{{libro.autor}}</td>
+		<td>{{libro.titulo | uppercase}}</td>
+		<td>{{libro.anno}}</td>
+		<!-- <td>{{libro.sinopsis | reducidor:150:"ver más" }}</td> -->
+		<td>{{libro.sinopsis | reducidor2:10:"..." }}</td>
+	</tr>
+
+</div>
+</div>
+</div>
+
